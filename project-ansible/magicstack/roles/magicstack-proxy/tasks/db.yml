@@ -1,0 +1,7 @@
+---
+  - name: create proxy db
+    mysql_db: login_host={{ db.dbhost }} login_user={{ db.db_proxy_user }} login_password={{ db.db_proxy_pwd }} login_port={{ db.dbport }} name={{ db.dbproxyname }} encoding=utf8 state=present 
+
+  - name: update proxy database
+    #shell: chdir={{ proxy.magicstack_proxy_path }} "python manage.py db upgrade" executable=/usr/bin/python
+    shell: /usr/bin/sh -c chdir={{ proxy.magicstack_proxy_path }} "/usr/bin/python manage.py db upgrade"

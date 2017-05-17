@@ -1,0 +1,9 @@
+---
+   - name: restart httpd 
+     service: name=httpd state=restarted
+
+   - name: cobbler sync
+     shell: cobbler sync
+
+   - name: cobbler get-loaders
+     shell: cobbler get-loaders 

@@ -1,0 +1,8 @@
+---
+  - name: start service
+    service: name={{ item }} state=restarted enabled=yes
+    with_items:
+      - "nginx"
+      #- "magicstack"
+      - "mariadb"
+    tags: start_magicstack

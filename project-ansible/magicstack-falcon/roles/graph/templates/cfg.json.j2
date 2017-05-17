@@ -1,0 +1,27 @@
+{
+	"debug": false,
+	"http": {
+		"enabled": true,
+		"listen": "{{ graph.http_listen }}:{{ graph.http_listen_port }}"
+	},
+	"rpc": {
+		"enabled": true,
+		"listen": "0.0.0.0:6070"
+	},
+	"rrd": {
+		"storage": {{ graph.rrd_storage }}
+	},
+	"db": {
+		"dsn": "root:@tcp({{ db.db_host }}:{{ db.db_port }})/graph?loc=Local&parseTime=true",
+		"maxIdle": 4
+	},
+	"callTimeout": 5000,
+	"migrate": {
+		"enabled": false,
+		"concurrency": 2,
+		"replicas": 500,
+		"cluster": {
+			"graph-00" : "{{ graph.migrate_graph }}:{{ graph.migrate_graph_port }}"
+		}
+	}
+}

@@ -1,0 +1,9 @@
+---
+  - name: install tftp
+    yum: name=tftp-server state=installed
+
+  - name: conf tftp
+    lineinfile: dest=/etc/xinetd.d/tftp regexp="disable" line="disable=no"
+
+  - name: start tftp
+    service: name=tftp state=restarted enabled=yes

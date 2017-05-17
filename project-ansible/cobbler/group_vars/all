@@ -1,0 +1,11 @@
+dhcp_start: "192.168.84.200"
+dhcp_end: "192.168.84.245"
+dhcp_interface: "eth0"
+
+#next_server: "{{ inventory_hostname }}"
+#server: "{{ inventory_hostname }}"
+
+next_server: "192.168.84.18"
+server: "192.168.84.18"
+
+cobbler_port: 88

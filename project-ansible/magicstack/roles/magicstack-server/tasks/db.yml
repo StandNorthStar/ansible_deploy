@@ -1,0 +1,8 @@
+---
+  - name: create database
+    mysql_db: login_host={{ db.dbhost }} login_user={{ db.dbuser }} login_password={{ db.dbpassword }} login_port={{ db.dbport }} name={{ db.dbservername }}  encoding=utf8 state=present
+
+  - name: magicstack migrate
+    #shell: chdir={{ server.magcistack_server_path }} "manage.py migrate" executable=/usr/bin/python
+    shell: /usr/bin/sh -c chdir={{ server.magcistack_server_path }} "/usr/bin/python manage.py migrate" 
+    notify: restart magicstack

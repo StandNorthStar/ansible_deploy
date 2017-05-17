@@ -1,0 +1,30 @@
+---
+  - name: Create Install-PATH 
+    file: path={{ INSTALL_PATH }} state=directory mode=0755
+
+  - name: copy update psutil
+    copy: src=psutil-5.2.2.tar.gz dest=/tmp/
+
+  #- name: update psutil
+  #  shell: pip install /tmp/psutil-5.2.2.tar.gz 
+    
+  - name: Install agent 
+    unarchive: src=agent.tar.gz dest={{ INSTALL_PATH }} 
+
+  - name: Config agent
+    template: src=cfg.json.j2 dest={{ INSTALL_PATH }}/agent/cfg.json
+
+  - name: Config Service
+    template: 
+      src=systemd.service.j2 
+      dest=/usr/lib/systemd/system/openfalcon-agent.service
+      group=root
+      owner=root
+      mode=0644
+
+  - name: system reload
+    shell: "systemctl daemon-reload"
+
+  - name: Start service
+    service: name=openfalcon-agent.service  state=restarted  enabled=yes
+

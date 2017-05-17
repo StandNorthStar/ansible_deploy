@@ -1,0 +1,7 @@
+---
+    - name: install cobbler
+      yum: name={{ item }} state=installed
+      with_items:
+        -  cobbler 
+        -  cobbler-web 
+      tags: install_cobbler

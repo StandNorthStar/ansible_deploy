@@ -1,0 +1,20 @@
+---
+  - name: Install query 
+    unarchive: src=query.tar.gz dest={{ INSTALL_PATH }}  creates={{ INSTALL_PATH }}/query
+
+  - name: Config Service
+    template: 
+      src=systemd.service.j2 
+      dest=/usr/lib/systemd/system/openfalcon-query.service
+      group=root
+      owner=root
+      mode=0644
+
+  - name: Config query
+    template: src=cfg.json.j2 dest={{ INSTALL_PATH }}/query/cfg.json
+
+  - name: system reload
+    shell: "systemctl daemon-reload"
+
+  - name: Start service
+    service: name=openfalcon-query.service  state=restarted  enabled=yes

@@ -1,0 +1,6 @@
+[magicstack-server]
+192.168.84.18 ansible_ssh_user=root ansible_ssh_pass=t2cloud@123 ask-pass=true
+
+[magicstack-proxy-flask]
+192.168.84.18 ansible_ssh_user=root ansible_ssh_pass=t2cloud@123 ask-pass=true
+

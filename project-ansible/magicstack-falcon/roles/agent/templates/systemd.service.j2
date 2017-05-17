@@ -1,0 +1,17 @@
+[Unit]
+Description=Open-falcon agent
+After=network.target mysql.service
+After=syslog.target
+
+[Install]
+WantedBy=multi-user.target
+Alias=openfalcon-agent.service
+
+[Service]
+User=root
+Group=root
+Type=forking
+# Start main service
+ExecStart={{ INSTALL_PATH }}/agent/control start 
+ExecStop={{ INSTALL_PATH }}/agent/control stop
+Restart=always

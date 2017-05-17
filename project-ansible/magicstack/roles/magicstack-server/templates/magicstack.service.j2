@@ -1,0 +1,15 @@
+[Unit]
+Description=MagicStack
+After=syslog.target network.target libvirtd.service
+
+[Service]
+Environment=LIBGUESTFS_ATTACH_METHOD=appliance
+#Type=notify
+NotifyAccess=all
+TimeoutStartSec=0
+Restart=always
+User=root
+ExecStart={{ server.magcistack_server_path }}/run_server.py
+
+[Install]
+WantedBy=multi-user.target

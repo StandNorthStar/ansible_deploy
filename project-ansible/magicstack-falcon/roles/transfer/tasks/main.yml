@@ -1,0 +1,20 @@
+---
+  - name: Install transfer 
+    unarchive: src=transfer.tar.gz dest={{ INSTALL_PATH }}  creates={{ INSTALL_PATH }}/transfer
+
+  - name: Config Service
+    template: 
+      src=systemd.service.j2 
+      dest=/usr/lib/systemd/system/openfalcon-transfer.service
+      group=root
+      owner=root
+      mode=0644
+
+  - name: Config transfer
+    template: src=cfg.json.j2 dest={{ INSTALL_PATH }}/transfer/cfg.json
+
+  - name: system reload
+    shell: "systemctl daemon-reload"
+
+  - name: Start service
+    service: name=openfalcon-transfer.service  state=restarted  enabled=yes

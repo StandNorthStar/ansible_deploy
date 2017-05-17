@@ -1,0 +1,34 @@
+---
+  - hosts: all
+    roles:
+      - role: common
+
+  - hosts: openfalcon-server
+    roles:
+      - {
+          role: graph,
+          when: server | bool 
+        }
+      - {
+          role: hbs,
+          when: server | bool
+        } 
+      - {
+          role: judge,
+          when: server | bool
+        }
+      - {
+          role: query,
+          when: server | bool
+        }
+      - {
+          role: transfer,
+          when: server | bool
+        }
+
+  - hosts: openfalcon-agent
+    roles:
+       - { 
+          role: agent,
+          when: enable_agent | bool 
+        }

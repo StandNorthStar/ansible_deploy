@@ -1,0 +1,22 @@
+# -*- coding: utf-8 -*-
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': '{{ db.dbservername }}',  # Or path to database file if using sqlite3.
+        'USER': '{{ db.dbuser }}',  # Not used with sqlite3.
+        'PASSWORD': '{{ db.dbpassword }}',  # Not used with sqlite3.
+        'HOST': '{{ db.dbhost }}',
+        'PORT': '{{ db.dbport }}',  # Set to empty string for default. Not used with sqlite3.
+        'OPTIONS': {'charset': 'utf8'},
+        'ATOMIC_REQUESTS': True,
+        "TEST": {
+            "CHARSET": "utf8",
+            "COLLATION": "utf8_general_ci",
+        }
+
+    }
+}
+
+RAVEN_CONFIG = {
+    'dsn': 'http://d8175e6f21a5404280f683349ed4d730:f94b12c82a284831a3e70fb035ec7407@172.16.30.170:9000/4',
+}

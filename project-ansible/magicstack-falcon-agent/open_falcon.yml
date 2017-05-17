@@ -1,0 +1,4 @@
+---
+  - hosts: openfalcon-agent
+    roles:
+       - agent

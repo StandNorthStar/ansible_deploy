@@ -1,0 +1,5 @@
+---
+  - name: start cobbler
+    service: name=cobblerd enabled=yes state=restarted
+    notify: cobbler get-loaders
+    tags: start_cobbler

@@ -1,0 +1,17 @@
+[Unit]
+Description=Open-falcon graph
+After=network.target mysql.service
+After=syslog.target
+
+[Install]
+WantedBy=multi-user.target
+Alias=openfalcon-graph.service
+
+[Service]
+User=root
+Group=root
+Type=forking
+# Start main service
+ExecStart={{ INSTALL_PATH }}/graph/control start 
+ExecStop={{ INSTALL_PATH }}/graph/control stop
+Restart=always

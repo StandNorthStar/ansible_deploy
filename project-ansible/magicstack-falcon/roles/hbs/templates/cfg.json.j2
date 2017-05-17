@@ -1,0 +1,12 @@
+{
+    "debug": true,
+    "database": "root:@tcp({{ db.db_host }}:{{ db.db_port }})/falcon_portal?loc=Local&parseTime=true",
+    "hosts": "",
+    "maxIdle": 100,
+    "listen": ":{{ hbs.listen }}",
+    "trustable": [""],
+    "http": {
+        "enabled": true,
+        "listen": "{{ hbs.http_listen }}:{{ hbs.http_listen_port }}"
+    }
+}

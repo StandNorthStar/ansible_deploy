@@ -1,0 +1,21 @@
+---
+  - name: Install agent 
+    unarchive: src=agent.tar.gz dest={{ INSTALL_PATH }}  creates={{ INSTALL_PATH }}/agent
+
+  - name: Config agent
+    template: src=cfg.json.j2 dest={{ INSTALL_PATH }}/agent/cfg.json
+
+  - name: Config Service
+    template: 
+      src=systemd.service.j2 
+      dest=/usr/lib/systemd/system/openfalcon-agent.service
+      group=root
+      owner=root
+      mode=0644
+
+  - name: system reload
+    shell: "systemctl daemon-reload"
+
+  - name: Start service
+    service: name=openfalcon-agent.service  state=restarted  enabled=yes
+

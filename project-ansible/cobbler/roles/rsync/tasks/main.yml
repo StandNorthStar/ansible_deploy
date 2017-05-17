@@ -1,0 +1,9 @@
+---
+  - name: install rsync
+    yum: name=rsync state=installed
+
+  - name: conf rsyncd
+    file: src=/usr/bin/rsync dest=/etc/xinetd.d/rsync  state=link
+
+  - name: start rsync
+    service: name=rsyncd enabled=yes state=restarted

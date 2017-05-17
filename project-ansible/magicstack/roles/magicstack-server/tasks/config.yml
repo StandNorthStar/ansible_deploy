@@ -1,0 +1,19 @@
+---
+  - name: config nginx 
+    template: src={{ item.a }} dest={{ item.b }}
+    with_items:
+       - { a: default.conf.j2, b: /etc/nginx/conf.d/default.conf }
+       - { a: nginx.conf.j2, b: /etc/nginx/nginx.conf }
+    notify: restart nginx
+
+  - name: config cfg.py
+    template: src=cfg.py.j2 dest={{ etc }}/cfg.py
+
+  - name: config gunicorn_cfg.py
+    template: src=gunicorn_cfg.py.j2 dest={{ etc }}/gunicorn_cfg.py
+
+  - name: config magicstack.service
+    template: src=magicstack.service.j2 dest=/usr/lib/systemd/system/magicstack.service
+    notify: 
+      - restart mariadb
+      - restart magicstack

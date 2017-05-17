@@ -1,0 +1,17 @@
+[Unit]
+Description=Open-falcon judge
+After=network.target mysql.service
+After=syslog.target
+
+[Install]
+WantedBy=multi-user.target
+Alias=openfalcon-judge.service
+
+[Service]
+User=root
+Group=root
+Type=forking
+# Start main service
+ExecStart={{ INSTALL_PATH }}/judge/control start 
+ExecStop={{ INSTALL_PATH }}/judge/control stop
+Restart=always

@@ -1,0 +1,42 @@
+---
+  #- name: Copy magicstack-server file
+    #copy: src={{ item }} dest=/tmp/
+    #with_items:
+    #  - "magicstack.tar.gz"
+    #  - "magicstack-ui.tar.gz"
+
+  #- name: Un tar.gz magicstack-server file
+  #  unarchive: src={{ item }} dest=/opt/
+  #  with_items: 
+  #    - magicstack.tar.gz
+  #    - magicstack-ui.tar.gz
+
+  - name: Install yum repo
+    yum: name=epel-release state=installed
+
+  - name: Install packages
+    yum: name={{ item }} state=installed
+    with_items:
+      - nginx
+      - openldap
+      - openldap-devel
+      - python-ldap
+      - python-devel
+      - mariadb-server
+      - mariadb-devel
+      - mariadb-libs
+      - python-pip
+      - gcc
+      - gcc-c++
+      - libjpeg-devel
+      - freetype-devel
+      - libpng-devel
+      - libffi
+      - libffi-devel
+      - sshpass
+
+  - name: Install pip packages
+    pip: extra_args="-i https://pypi.douban.com/simple" requirements={{ server.magcistack_server_path }}/requirements.txt 
+
+  - name: Install setuptools
+    pip: extra_args="-i https://pypi.douban.com/simple" name=setuptools state=latest

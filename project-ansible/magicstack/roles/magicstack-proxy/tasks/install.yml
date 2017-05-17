@@ -1,0 +1,27 @@
+---
+  #- name: copy magicstack-proxy-flask
+  #  copy: src=magicstack-proxy-flask.tar.gz dest=/tmp
+
+  #- name: Un tar.gz magicstack-proxy-flask file
+  #  unarchive: src=magicstack-proxy-flask.tar.gz dest=/opt/
+
+  - name: Install yum repo
+    yum: name=epel-release state=installed
+
+  - name: Install packages
+    yum: name={{ item }} state=installed
+    with_items:
+      - nmap
+      - python-dmidecode
+      - python-pip
+      - gcc
+      - gcc-c++
+      - net-tools
+      - sshpass
+      - redis
+
+  - name: Install pip packages
+    pip: extra_args="-i https://pypi.douban.com/simple" requirements={{ proxy.magicstack_proxy_path }}/requirements.txt 
+
+  - name: Install setuptools
+    pip: extra_args="-i https://pypi.douban.com/simple" name=setuptools state=latest

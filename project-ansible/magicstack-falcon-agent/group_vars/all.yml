@@ -1,0 +1,23 @@
+---
+INSTALL_PATH: "/opt/magicstack_openfalcon"
+
+agent:
+  plugin_enable: "true"
+
+  # heartbeat --> magicstack-proxy ip addr
+  heartbeat: "192.168.84.18"
+  heartbeatport: 8200
+
+  http_enable: "false"
+  http_listen: 1988
+
+  transfer: "192.168.84.18"
+  transfer_port: 8433
+  interval_time: 60
+
+  collector_net: 
+    - "eth"
+    - "em"
+    - "enp"
+
+

@@ -1,0 +1,34 @@
+---
+enable_server: true
+enable_proxy: true
+
+db:
+  dbservername: "mg1"
+  dbproxyname: "proxy1"
+  dbuser: "root"
+  dbpassword: ""
+  dbhost: "localhost"
+  dbport: 3306
+  db_graph: "graph"
+  db_proxy_user: "root"     # "proxy"
+  db_proxy_pwd: ""      # "qwer1011"
+
+server:
+  magicstack_ui_src_path: "/opt/magicstack-ui/src"
+  magcistack_server_path: "/opt/magicstack/MagicStack"
+  magicstack_port: 8000
+  nginx_port: 80
+  #ipaddr: "{{ inventory_hostname }}"
+  ipaddr: "192.168.84.18"
+proxy:
+  magicstack_proxy_path: "/opt/magicstack-proxy-flask"
+  #magicstack_server_address: "http://{{ inventory_hostname }}"
+  magicstack_server_address: "http://192.168.84.18"
+  #cobbler_ip: "{{ inventory_hostname }}"
+  cobbler_ip: "192.168.84.18"
+  cobbler_port: 88
+  cobbler_user: "cobbler"
+  cobbler_password: "cobbler"
+  proxy_port: 8100
+  DATABASE_URL_GRAPH: "mysql+mysqldb://{{ db.dbuser }}:{{ db.dbpassword }}@{{ db.dbhost }}/{{ db.db_graph }}?charset=utf8"
+
