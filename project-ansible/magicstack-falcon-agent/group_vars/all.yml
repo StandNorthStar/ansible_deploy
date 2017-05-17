@@ -5,13 +5,13 @@ agent:
   plugin_enable: "true"
 
   # heartbeat --> magicstack-proxy ip addr
-  heartbeat: "192.168.84.18"
+  heartbeat: "localhost"
   heartbeatport: 8200
 
   http_enable: "false"
   http_listen: 1988
 
-  transfer: "192.168.84.18"
+  transfer: "192.168.64.8"
   transfer_port: 8433
   interval_time: 60
 
