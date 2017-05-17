@@ -1,11 +1,11 @@
 ---
-INSTALL_PATH: "/opt/magicstack_openfalcon"
+INSTALL_PATH: "/opt/openfalcon-agent"
 
 agent:
   plugin_enable: "true"
 
   # heartbeat --> magicstack-proxy ip addr
-  heartbeat: "localhost"
+  heartbeat: "192.168.64.8"
   heartbeatport: 8200
 
   http_enable: "false"
