@@ -1,0 +1,22 @@
+---
+   - name: restart httpd 
+     service: name=httpd state=restarted
+
+   - name: cobbler sync
+     shell: cobbler sync
+    
+   - name: copy getloader
+     copy: src={{ item }} dest=/var/lib/cobbler/loaders/
+     with_items:
+       - "COPYING.elilo"
+       - "COPYING.yaboot"
+       - "COPYING.syslinux"
+       - "elilo-ia64.efi"
+       - "grub-x86_64.efi"
+       - "grub-x86.efi"
+       - "pxelinux.0"
+       - "menu.c32"
+       - "yaboot"
+
+   - name: cobbler get-loaders
+     shell: cobbler get-loaders 

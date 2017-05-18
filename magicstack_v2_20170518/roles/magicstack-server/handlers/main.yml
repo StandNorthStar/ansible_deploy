@@ -1,0 +1,9 @@
+---
+  - name: restart mariadb
+    service: name=mariadb state=restarted enabled=yes
+
+  - name: restart magicstack
+    service: name=magicstack state=restarted enabled=yes
+
+  - name: restart nginx
+    service: name=nginx state=restarted enabled=yes

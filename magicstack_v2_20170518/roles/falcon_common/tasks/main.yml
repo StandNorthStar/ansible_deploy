@@ -1,0 +1,62 @@
+---
+
+  - name: Create Install-PATH 
+    file: path={{ INSTALL_PATH }} state=directory mode=0755
+
+  #- name: Install epel
+  #  yum: name=epel-release state=installed
+
+  #- name: Install packages
+  #  yum: name={{ item }} state=installed
+  #  with_items:
+  #    - "python-pip"
+  #    - "python-devel"
+  #    - "redis"
+  #  when: inventory_hostname in groups['openfalcon-server']
+
+  - name: create app directory
+    file: path={{ INSTALL_PATH }}/{{ item }} state=directory mode=0755
+    with_items:
+      - "graph"
+      - "hbs"
+      - "judge"
+      - "query"
+      - "transfer"
+    when: enable_server
+
+  - name: copy database sql
+    copy: 
+      src={{ item }}
+      dest=/tmp
+    with_items:
+      - "db_schema"
+      - "jemalloc-3.6.0-1.el7.x86_64.rpm"
+      - "redis-3.2.3-1.el7.x86_64.rpm"
+    when: enable_server
+
+  - name: Install packages
+    yum: name={{ item }} state=installed
+    with_items:
+      - "python-pip"
+      - "python-devel"
+      - "/tmp/jemalloc-3.6.0-1.el7.x86_64.rpm"
+      - "/tmp/redis-3.2.3-1.el7.x86_64.rpm"
+    when: enable_server
+  
+  - name: import database sql
+    mysql_db: 
+      login_host={{ db.db_host }} 
+      login_port={{ db.db_port }}
+      login_user={{ db.db_user }}
+      login_password={{ db.dbpasswd }}
+      name=all 
+      state=import 
+      target=/tmp/db_schema/{{ item }}
+    with_items:
+      - "graph-db-schema.sql"
+      - "dashboard-db-schema.sql"
+      - "portal-db-schema.sql"
+      - "links-db-schema.sql"
+      - "uic-db-schema.sql"
+    when: enable_server
+

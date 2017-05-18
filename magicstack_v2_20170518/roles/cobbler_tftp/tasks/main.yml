@@ -1,0 +1,12 @@
+---
+  - name: install tftp
+    yum: name={{ item }} state=installed
+    with_items:
+      - "xinetd"
+      - "tftp-server"
+
+  - name: conf tftp
+    lineinfile: dest=/etc/xinetd.d/tftp regexp="disable" line="disable=no"
+
+  - name: start tftp
+    service: name=xinetd  state=restarted enabled=yes

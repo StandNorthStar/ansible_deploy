@@ -1,0 +1,55 @@
+server {
+    listen       {{ magicstackserver.nginx_port }};
+    server_name  localhost;
+    set         $root_path '{{ magicstackserver.angular_ui }}';
+    root        $root_path;
+    location ^~ /static/ {
+                alias {{ static_all }};
+    }
+
+    location ^~ /media/ {
+                alias '{{ magicstackserver.magcistack_server_path }}/media';
+    }
+    location ^~ /v1/ {
+                proxy_pass http://127.0.0.1:{{ magicstackserver.magicstack_port }};
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+    location ^~ /v2/ {
+                proxy_pass http://127.0.0.1:{{ magicstackserver.magicstack_port }};
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+    location ^~ /docs/ {
+                proxy_pass http://127.0.0.1:{{ magicstackserver.magicstack_port }};
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+
+    location ^~ /monitor {
+          alias '{{ magicstackserver.magicstack_ui }}/monitor';
+          try_files $uri $uri/ /monitor/index.html;
+
+    }
+    location = /config.js{
+        root /var/www/html/;
+    }
+    location ^~ /auth {
+          alias '{{ magicstackserver.magicstack_ui }}/auth';
+          try_files $uri $uri/ /auth/index.html;
+
+    }
+    location ^~ /task {
+          alias /var/lib/jenkins/workspace/vue-task/dist/task;
+          try_files $uri $uri/ /task/index.html;
+
+    }
+}

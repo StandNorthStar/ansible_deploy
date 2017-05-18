@@ -1,0 +1,3 @@
+---
+static_all: "{{ magicstackserver.magcistack_server_path }}/static_all/"
+etc: "{{ magicstackserver.magcistack_server_path }}/etc/"

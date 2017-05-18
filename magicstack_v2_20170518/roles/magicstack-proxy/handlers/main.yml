@@ -1,0 +1,3 @@
+---
+  - name: start proxys.service
+    service: name=magicstack-proxy-flask state=restarted

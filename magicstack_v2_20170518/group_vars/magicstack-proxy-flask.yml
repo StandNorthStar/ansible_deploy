@@ -1,0 +1,40 @@
+---
+enable_proxy: true
+
+magcistackproxydb:
+  dbproxyname: "proxy1"
+  dbuser: "root"
+  dbpassword: ""
+  dbhost: "localhost"
+  dbport: 3306
+  # openfalcon graph db
+  db_graph_host: "localhost"
+  db_graph_name: "graph"
+  db_graph_user: "root"     # "proxy"
+  db_graph_pwd: ""      # "qwer1011"
+  db_graph_port: 3306
+
+servermagicstack:
+  ipaddr: "172.16.30.56"
+
+proxy:
+  magicstack_proxy_path: "/opt/magicstack-proxy-flask"
+  magicstack_server_address: "http://172.16.30.56"
+  cobbler_ip: "172.16.30.56"
+  cobbler_port: 88
+  cobbler_user: "cobbler"
+  cobbler_password: "cobbler"
+  proxy_port: 8100
+  DATABASE_URL_GRAPH: "mysql+mysqldb://{{ magcistackproxydb.db_graph_user }}:{{ magcistackproxydb.db_graph_pwd }}@{{ magcistackproxydb.db_graph_host }}:{{ magcistackproxydb.db_graph_port }}/{{ magcistackproxydb.db_graph_name }}?charset=utf8"
+  MS_RPC_PORT: 9001
+  
+openfalcon_agent:
+  INSTALL_PATH: "/opt/magicstack_openfalcon"
+  agent: 
+    plugin_enable: "true"
+    heartbeat: "172.16.30.56"
+    heartbeatport: 8200
+    transfer: "172.16.30.56"
+    transfer_port: 8433
+    http_enable: "false"
+    http_listen: "1988"

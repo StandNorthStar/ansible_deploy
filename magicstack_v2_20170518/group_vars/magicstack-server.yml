@@ -1,0 +1,20 @@
+---
+enable_server: false
+
+magicstackserverdb:
+  dbservername: "mg1"
+  dbuser: "root"
+  dbpassword: ""
+  dbhost: "localhost"
+  dbport: 3306
+
+magicstackserver:
+  # "url '/' bixu "
+  magicstack_ui: '/opt/magicstack-ui'
+  angular_ui: "/opt/magicstack-ui/angular_ui"
+
+  magcistack_server_path: "/opt/magicstack/MagicStack"
+  magicstack_port: 8000
+  nginx_port: 80
+  ipaddr: "172.16.30.56"
+

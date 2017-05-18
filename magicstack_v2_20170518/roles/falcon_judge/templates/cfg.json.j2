@@ -1,0 +1,30 @@
+{
+    "debug": true,
+    "debugHost": "nil",
+    "remain": 11, 
+    "http": {
+        "enabled": true,
+        "listen": "{{ judge.http_listen }}:{{ judge.http_listen_port }}"
+    },
+    "rpc": {
+        "enabled": true,
+        "listen": "{{ judge.rpc_listen }}:{{ judge.rpc_listen_port }}"
+    },
+    "hbs": {
+        "servers": ["{{ judge.hbs_server }}:{{ judge.hbs_port }}"],
+        "timeout": 300,
+        "interval": 60
+    },
+    "alarm": {
+        "enabled": true,
+        "minInterval": 300,
+        "queuePattern": "event:p%v",
+        "redis": {
+            "dsn": "{{ judge.alarm_redis_dsn }}:{{ judge.alarm_redis_dsn_port }}",
+            "maxIdle": 5,
+            "connTimeout": 5000,
+            "readTimeout": 5000,
+            "writeTimeout": 5000
+        }
+    }
+}

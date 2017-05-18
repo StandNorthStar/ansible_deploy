@@ -1,0 +1,53 @@
+---
+
+INSTALL_PATH: "/opt/magicstack_openfalcon"
+
+falcon_server: true
+
+db:
+  db_host: "localhost"
+  db_port: 3306
+  db_user: "root"
+  dbpasswd: ""
+
+graph:
+  http_listen: "0.0.0.0"
+  http_listen_port: 6071
+  rrd_storage: '"/home/work/data/6070"'
+  migrate_graph: "127.0.0.1"
+  migrate_graph_port: 6070
+
+
+hbs:
+  listen: 6030
+  http_listen: "0.0.0.0"
+  http_listen_port: 6031
+
+
+judge:
+  http_listen: "0.0.0.0"
+  http_listen_port: 6081
+  rpc_listen: "0.0.0.0"
+  rpc_listen_port: 6080
+  hbs_server: "127.0.0.1"
+  hbs_port: 8200
+  alarm_redis_dsn: "127.0.0.1"
+  alarm_redis_dsn_port: 6379
+
+query:
+  http_listen: "0.0.0.0"
+  http_listen_port: 9966
+  api_ip: "127.0.0.1"
+  api_port: 9966
+  api_dashborad: "127.0.0.1"
+  api_dashborad_port: 8081
+
+transfer:
+  listen: "0.0.0.0"
+  port: 6060
+  socket_ip: "0.0.0.0"
+  socket_port: 4444
+  judge_ip: "127.0.0.1"
+  judge_port: 6080
+  tsdb_ip: "127.0.0.1"
+  tsdb_port: 8088

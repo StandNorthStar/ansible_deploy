@@ -1,0 +1,37 @@
+---
+
+INSTALL_PATH: "/opt/magicstack_openfalcon"
+
+enable_agent: false
+
+agent:
+  plugin_enable: "true"
+
+  http_eanbled: "false"
+  http_listen: 1988
+
+  transfer: "172.16.30.56"
+  transfer_port: 8433
+
+  heartbeat_addr: "172.16.30.56"
+  heartbeat_addr_port: 6030
+
+snmp:
+  heartbeat_enabled: "true"
+  heartbeat_addr: "172.16.30.56"
+  heartbeat_port: 8200
+
+  transfer_eanbled: "true"
+  transfer_addr: "172.16.30.56"
+  transfer_port: 8433
+
+  http_eanbled: "true"
+  http_addr: "localhost"
+  http_port: 1989
+
+ipmi:
+  proxy_ip: "172.16.30.56"
+  proxy_port: 8100
+
+  transfer_ip: "172.16.30.56"
+  transfer_port: 6060

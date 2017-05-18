@@ -1,0 +1,14 @@
+---
+  - hosts: magicstack-server
+    roles:
+      - {
+         role: magicstack-server,
+         when: enable_server | bool 
+      }
+
+  - hosts: magicstack-proxy-flask
+    roles: 
+      - {
+         role: magicstack-proxy,
+         when: enable_proxy | bool
+      }

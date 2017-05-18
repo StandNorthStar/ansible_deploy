@@ -1,0 +1,15 @@
+[Unit]
+Description=MagicStack Proxy
+After=syslog.target network.target libvirtd.service
+
+[Service]
+Environment=LIBGUESTFS_ATTACH_METHOD=appliance
+#Type=notify
+NotifyAccess=all
+TimeoutStartSec=0
+Restart=always
+User=root
+ExecStart={{ proxy.magicstack_proxy_path }}/manage.py  runserver
+
+[Install]
+WantedBy=multi-user.target

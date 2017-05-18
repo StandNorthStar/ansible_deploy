@@ -1,0 +1,40 @@
+---
+  - name: Create Install-PATH 
+    file: path={{ INSTALL_PATH }} state=directory mode=0755
+
+  - name: Install agent 
+    unarchive: src={{ item }} dest={{ INSTALL_PATH }}
+    with_items:
+      - agent.tar.gz
+      - monitor-ipmi.tar.gz
+      - snmp-collector_0512.tar.gz
+
+  - name: Config agent
+    template: src={{ item.conf }} dest={{ item.path }}
+    with_items:
+      - { conf: cfg.json.j2, path: "{{ INSTALL_PATH }}/agent/cfg.json" }
+      - { conf: cfg_snmp.json.j2, path: "{{ INSTALL_PATH }}/snmp-collector/cfg.json" }
+      - { conf: config_ipmi.json.j2, path: "{{ INSTALL_PATH }}/monitor-ipmi/config.json" }
+
+  - name: Config Service
+    template: 
+      src={{ item.systemp }} 
+      dest=/usr/lib/systemd/system/{{ item.systemd }}
+      group=root
+      owner=root
+      mode=0644
+    with_items:
+      - { systemp: systemd.service.j2, systemd: openfalcon-agent.service }
+      - { systemp: system_snmp.service.j2, systemd: snmp-agent.service }
+      - { systemp: system_ipmimonitor.service.j2, systemd: ipmimonitor-agent.service }
+
+  - name: system reload
+    shell: "systemctl daemon-reload"
+
+  - name: Start service
+    service: name={{ item }}  state=restarted  enabled=yes
+    with_items:
+      - "openfalcon-agent.service"
+      - "snmp-agent.service"
+      - "ipmimonitor-agent.service"
+

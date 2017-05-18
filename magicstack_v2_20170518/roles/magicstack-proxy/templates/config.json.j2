@@ -1,0 +1,32 @@
+{
+  "DATABASE_URL": "mysql+mysqldb://{{ magcistackproxydb.dbuser }}:{{ magcistackproxydb.dbpassword }}@{{ magcistackproxydb.dbhost }}:{{ magcistackproxydb.dbport }}/{{ magcistackproxydb.dbproxyname }}?charset=utf8",
+  "MAGICSTACK_SERVER": "http://{{ proxy.magicstack_server_address }}",
+  "SERVER_PORT": "{{ proxy.proxy_port }}",
+  "COBBLER_RPC_HOST": "{{ proxy.cobbler_ip }}",
+  "COBBLER_RPC_PORT": "{{ proxy.cobbler_port }}",
+  "COBBLER_USERNAME": "{{ proxy.cobbler_user }}",
+  "COBBLER_PASSWORD": "{{ proxy.cobbler_password }}",
+  "MS_HOST": "{{ servermagicstack.ipaddr }}",
+  "MS_RPC_PORT": "{{ proxy.MS_RPC_PORT }}",
+  "DATABASE_URL_GRAPH": "{{ proxy.DATABASE_URL_GRAPH }}",
+  "DEPLOY_AGENT_CONFIG": {
+    "all": {
+      "INSTALL_PATH": "{{ openfalcon_agent.INSTALL_PATH }}",
+      "agent": {
+        "plugin_enable": "{{ openfalcon_agent.agent.plugin_enable }}",
+        "heartbeat": "{{ openfalcon_agent.agent.heartbeat }}",
+        "heartbeatport": "{{ openfalcon_agent.agent.heartbeatport }}",
+        "transfer": "{{ openfalcon_agent.agent.transfer }}",
+        "transfer_port": "{{ openfalcon_agent.agent.transfer_port }}",
+        "interval_time": 60,
+        "http_enable": "{{ openfalcon_agent.agent.http_enable }}",
+        "http_listen": "{{ openfalcon_agent.agent.http_listen }}",
+        "collector_net": [
+          "eth",
+          "em",
+          "enp"
+        ]
+      }
+    }
+  }
+}

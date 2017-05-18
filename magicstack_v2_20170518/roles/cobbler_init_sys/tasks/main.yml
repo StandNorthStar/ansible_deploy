@@ -1,0 +1,29 @@
+---
+    #- name: install epel
+    #  yum: name=epel-release state=installed
+
+    - name: install packages
+      yum: name={{ item }} state=installed
+      with_items:
+        - python-netaddr 
+        - python-urlgrabber 
+        - mod_ssl 
+        - mod_wsgi 
+        - python-devel 
+        - python-setuptools 
+        - dhcp 
+        - fence-agents 
+        - python-ctypes 
+        - pykickstart 
+        - PyYAML 
+        - python-django 
+        - python-markdown 
+        - python-cheetah 
+        - python-simplejson 
+      tags: other_packages
+
+    - name: selinux off
+      selinux: policy=targeted state=disabled
+
+    - name: set selinux
+      shell: setenforce 0 || /bin/true

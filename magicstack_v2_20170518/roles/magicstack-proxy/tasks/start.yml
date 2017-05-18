@@ -1,0 +1,7 @@
+---
+  - name: start proxy flask
+    service: name={{ item }} state=restarted enabled=yes
+    with_items:
+      - "magicstack-proxy-flask"
+      - "redis.service"
+  

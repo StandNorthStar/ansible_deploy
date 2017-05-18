@@ -1,0 +1,8 @@
+dhcp_start: "192.168.1.200"
+dhcp_end: "192.168.1.245"
+dhcp_interface: "eth0"
+
+next_server: "172.16.30.56"
+server_cobbler: "172.16.30.56"
+
+cobbler_port: 88

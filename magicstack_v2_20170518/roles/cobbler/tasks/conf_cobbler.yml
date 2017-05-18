@@ -1,0 +1,12 @@
+---
+    - name: conf settings
+      template: src=settings.j2 dest=/etc/cobbler/settings
+      tags: conf_settings
+
+    - name: conf modules
+      template: src=modules.j2 dest=/etc/cobbler/modules.conf
+      tags: conf_modules
+
+    - name: conf dnsmasq
+      template: src=dnsmasq.j2 dest=/etc/cobbler/dnsmasq.template
+      tags: conf_dnsmasq

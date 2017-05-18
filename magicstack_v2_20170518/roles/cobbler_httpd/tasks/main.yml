@@ -1,0 +1,12 @@
+---
+    - name: install httpd
+      yum: name=httpd state=installed
+
+    - name: conf httpd
+      lineinfile: dest=/etc/httpd/conf/httpd.conf regexp={{ item.name }} line={{ item.modify }}
+      with_items:
+        - { "name": "^ServerName", "modify": "ServerName 127.0.0.1:{{ cobbler_port }}" }
+        - { "name": "^Listen", "modify": "Listen {{ cobbler_port }}" }
+
+    - name: start httpd
+      service: name=httpd enabled=yes state=restarted

@@ -1,0 +1,4 @@
+---
+  - include: install.yml
+  - include: conf_cobbler.yml
+  - include: start.yml

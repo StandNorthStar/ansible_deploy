@@ -1,0 +1,20 @@
+---
+  - name: Install judge 
+    unarchive: src=judge.tar.gz dest={{ INSTALL_PATH }}/judge 
+
+  - name: Config Service
+    template: 
+      src=systemd.service.j2 
+      dest=/usr/lib/systemd/system/openfalcon-judge.service
+      group=root
+      owner=root
+      mode=0644
+
+  - name: Config judge
+    template: src=cfg.json.j2 dest={{ INSTALL_PATH }}/judge/cfg.json
+
+  - name: system reload
+    shell: "systemctl daemon-reload"
+ 
+  - name: Start service
+    service: name=openfalcon-judge.service  state=restarted  enabled=yes

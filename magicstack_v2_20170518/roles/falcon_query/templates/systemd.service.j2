@@ -1,0 +1,17 @@
+[Unit]
+Description=Open-falcon query
+After=network.target mysql.service
+After=syslog.target
+
+[Install]
+WantedBy=multi-user.target
+Alias=openfalcon-query.service
+
+[Service]
+User=root
+Group=root
+Type=forking
+# Start main service
+ExecStart={{ INSTALL_PATH }}/query/control start 
+ExecStop={{ INSTALL_PATH }}/query/control stop
+Restart=always

@@ -1,0 +1,22 @@
+{
+    "debug": "false",
+    "http": {
+        "enabled":  true,
+        "listen":   "{{ query.http_listen }}:{{ query.http_listen_port }}"
+    },
+    "graph": {
+        "connTimeout": 1000,
+        "callTimeout": 5000,
+        "maxConns": 32,
+        "maxIdle": 32,
+        "replicas": 500,
+        "cluster": {
+            "graph-00": "{{ graph.migrate_graph }}:{{ graph.migrate_graph_port }}"
+        }
+    },
+    "api": {
+        "query": "http://{{ query.api_ip }}:{{ query.api_port }}",
+        "dashboard": "http://{{ query.api_dashborad }}:{{ query.api_dashborad_port }}",
+        "max": 500
+    }
+}

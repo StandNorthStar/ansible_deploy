@@ -1,0 +1,9 @@
+---
+   - hosts: cobbler-server        
+     roles:
+        - cobbler_init_sys
+        - cobbler_tftp
+        - cobbler_rsync
+        - cobbler_httpd
+        - cobbler 
+        - cobbler_dnsmasq 

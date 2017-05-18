@@ -1,0 +1,54 @@
+{
+    "debug": false,
+	"debugmetric":{
+		"endpoints":[],
+		"metrics":[],
+		"tags":""
+	},
+	"switch":{
+	    "enabled": true,
+        "ipFromHbs": true,
+		"ipRange":[
+ 		],
+		"gosnmp":true,
+ 		"pingTimeout":300,
+		"pingRetry":4,
+		"community":"",
+        "snmpversion": "v3",
+      	"snmpv3user":"sinorail",
+        "snmpv3pass":"sinorail",
+        "snmpv3privacypass":"sinorail",
+        "snmpv3authprotocol":"SHA",
+        "snmpv3privacyProtocol":"DES",
+		"snmpTimeout":1000,
+		"snmpRetry":5,
+		"ignoreIface": ["Nu","NU","Vlan","Vl"],
+		"ignorePkt": true,
+		"ignoreBroadcastPkt": true,
+		"ignoreMulticastPkt": true,
+		"ignoreDiscards": true,
+		"ignoreErrors": true,
+		"ignoreOperStatus": true,
+		"ignoreUnknownProtos":true,
+		"ignoreOutQLen":true,
+		"displayByBit": true,
+		"fastPingMode": false,
+		"limitConcur": 1000
+ 	},
+    "heartbeat": {
+        "enabled": {{ snmp.heartbeat_enabled }},
+        "addr": "{{ snmp.heartbeat_addr }}:{{ snmp.heartbeat_port }}", 
+        "interval": 60, 
+        "timeout": 1000 
+    },        
+    "transfer": {
+        "enabled": {{ snmp.transfer_eanbled }},
+        "addr": "{{ snmp.transfer_addr }}:{{ snmp.transfer_port }}",
+        "interval": 60,
+        "timeout": 1000
+    },
+    "http": {
+        "enabled": {{ snmp.http_eanbled }},
+        "listen": "{{ snmp.http_addr }}:{{ snmp.http_port }}"
+    }
+}

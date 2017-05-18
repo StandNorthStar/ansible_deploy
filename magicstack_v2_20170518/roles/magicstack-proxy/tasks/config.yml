@@ -1,0 +1,7 @@
+---
+  - name: config proxy config
+    template: src=config.json.j2 dest={{ proxy.magicstack_proxy_path }}/config.json
+ 
+  - name: config proxy flask service
+    template: src=magicstack-proxy-flask.service.j2 dest=/usr/lib/systemd/system/magicstack-proxy-flask.service
+    #notify: start proxys.service

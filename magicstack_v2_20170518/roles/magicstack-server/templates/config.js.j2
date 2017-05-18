@@ -1,0 +1,27 @@
+var CONFIG= {
+  public_cloud: true,
+  //部署项目
+   switcher:{
+    deployment:true,
+    setting:true,
+    monitor:true,
+    task:false,
+  },
+  home: '/monitor', //默认登录跳转url
+
+  login_api: 'http://{{ magicstackserver.ipaddr }}:{{ magicstackserver.magicstack_port}}',//登录页面数据api
+  login_web: '/auth',//登录页面web路径
+  login_router_base: '/auth', //登录页面路由基础url
+
+  monitor_api: 'http://{{ magicstackserver.ipaddr }}:{{ magicstackserver.magicstack_port}}',//监控页面数据api
+  monitor_web: '/monitor', //监控页面web路径
+  monitor_router_base: '/monitor', //监控页面路由基础url
+
+  angular_web: "/",
+  angular_console_router: "/app/ui/overview",
+  angular_admin_router: "/admin/project/list",
+
+  task_api: 'http://{{ magicstackserver.ipaddr }}:{{ magicstackserver.magicstack_port}}',//任务数据api
+  task_web: '/task', //任务页面web路径
+  task_router_base: '/task', //任务页面路由基础url
+};

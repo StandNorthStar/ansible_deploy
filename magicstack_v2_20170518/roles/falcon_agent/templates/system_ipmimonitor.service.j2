@@ -1,0 +1,16 @@
+[Unit]
+Description=IPMI Monitor Plugin
+After=syslog.target network.target
+
+[Service]
+Environment=LIBGUESTFS_ATTACH_METHOD=appliance
+#Type=notify
+NotifyAccess=all
+TimeoutStartSec=0
+Restart=always
+User=root
+ExecStart={{ INSTALL_PATH }}/monitor-ipmi/run_server.py
+#ExecStop={{ INSTALL_PATH }}/monitor-ipmi/run_server.py
+
+[Install]
+WantedBy=multi-user.target

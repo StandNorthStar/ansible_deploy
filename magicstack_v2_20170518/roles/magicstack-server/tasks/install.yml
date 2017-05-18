@@ -1,0 +1,63 @@
+---
+  # - name: Copy magicstack-server file
+  #   copy: src={{ item }} dest=/tmp/
+  #   with_items:
+  #     - "magicstack.tar.gz"
+  #     - "magicstack-ui.tar.gz"
+
+  # - name: un tar magicstackserver
+  #   shell: tar fzx {{ item }} -C /opt/ chdir=/tmp
+  #   with_items:
+  #     - "magicstack.tar.gz"
+  #     - "magicstack-ui.tar.gz"
+
+  #- name: Un tar.gz magicstack-server file
+  #  unarchive: src={{ item }} dest=/opt/
+  #  with_items: 
+  #    - magicstack.tar.gz
+  #    - magicstack-ui.tar.gz
+
+  #- name: Install yum repo
+  #  yum: name=epel-release state=installed
+
+  - name: create ui dir
+    file: path={{ magicstackserver.angular_ui }} state=directory mode=0755
+
+  - name: install ui-packages
+    unarchive: src={{ item }} dest={{ magicstackserver.magicstack_ui }}
+    with_items: 
+      - "vue_monitor_staging_20170516_172130.tar.gz"
+      - "vue_usercenter_staging_20170502_143941.tar.gz"
+
+  - name: install angular_ui packages
+    unarchive: src="angular_ui_staging_20170515_093727.tar.gz" dest={{ magicstackserver.angular_ui }}
+
+  - name: Install packages
+    yum: name={{ item }} state=installed
+    with_items:
+      - nginx
+      - openldap
+      - openldap-devel
+      - python-ldap
+      - python-devel
+      - mariadb-server
+      - mariadb-devel
+      - mariadb-libs
+      - python-pip
+      - gcc
+      - gcc-c++
+      - libjpeg-devel
+      - freetype-devel
+      - libpng-devel
+      - libffi
+      - libffi-devel
+      - sshpass
+
+  # - name: install 
+  #   shell: pip install /tmp/pip_package/incremental-16.10.1-py2.py3-none-any.whl
+
+  - name: Install pip packages
+    pip: extra_args="--no-index --find-links=file:///tmp/pip_package" requirements={{ magicstackserver.magcistack_server_path }}/requirements.txt 
+
+  - name: Install setuptools
+    pip: extra_args="--no-index --find-links=file:///tmp/pip_package" name=setuptools state=latest

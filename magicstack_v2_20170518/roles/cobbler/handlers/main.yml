@@ -1,0 +1,3 @@
+---
+  - name: cobbler get-loaders
+    shell: cobbler get-loaders || /bin/true
