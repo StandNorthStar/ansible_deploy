@@ -40,7 +40,7 @@ server {
 
     }
     location = /config.js{
-        root /var/www/html/;
+        root '{{ magicstackserver.magicstack_ui }}';
     }
     location ^~ /auth {
           alias '{{ magicstackserver.magicstack_ui }}/auth';
