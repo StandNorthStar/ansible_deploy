@@ -4,4 +4,6 @@
     with_items:
       - "magicstack-proxy-flask"
       - "redis.service"
+      - "snmp-agent.service"
+      - "ipmimonitor-agent.service"
   

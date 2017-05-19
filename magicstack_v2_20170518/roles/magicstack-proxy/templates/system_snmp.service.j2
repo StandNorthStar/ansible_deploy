@@ -12,6 +12,6 @@ User=root
 Group=root
 Type=forking
 # Start main service
-ExecStart={{ INSTALL_PATH }}/snmp-collector/control start 
-ExecStop={{ INSTALL_PATH }}/snmp-collector/control stop
+ExecStart={{ proxy.openfalconagent_path }}/snmp-collector/control start 
+ExecStop={{ proxy.openfalconagent_path }}/snmp-collector/control stop
 Restart=always

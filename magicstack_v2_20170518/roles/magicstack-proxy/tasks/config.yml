@@ -1,7 +1,27 @@
 ---
   - name: config proxy config
     template: src=config.json.j2 dest={{ proxy.magicstack_proxy_path }}/config.json
+
+  - name: config falcon snmp ipmi 
+    template: src={{ item.conf }} dest={{ item.path }}
+    with_items:
+      - { conf: cfg_snmp.json.j2, path: "{{ proxy.openfalconagent_path }}/snmp-collector/cfg.json" }
+      - { conf: config_ipmi.json.j2, path: "{{ proxy.openfalconagent_path }}/monitor-ipmi/config.json" }
  
   - name: config proxy flask service
     template: src=magicstack-proxy-flask.service.j2 dest=/usr/lib/systemd/system/magicstack-proxy-flask.service
     #notify: start proxys.service
+
+  - name: config snmp ipmi agent service
+    template: 
+      src={{ item.systemp }} 
+      dest=/usr/lib/systemd/system/{{ item.systemd }}
+      group=root
+      owner=root
+      mode=0644
+    with_items:
+      - { systemp: system_snmp.service.j2, systemd: snmp-agent.service }
+      - { systemp: system_ipmimonitor.service.j2, systemd: ipmimonitor-agent.service }
+
+  - name: system reload
+    shell: "systemctl daemon-reload"

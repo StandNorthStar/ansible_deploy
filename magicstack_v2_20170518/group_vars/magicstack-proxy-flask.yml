@@ -18,6 +18,7 @@ servermagicstack:
   ipaddr: "172.16.30.56"
 
 proxy:
+  openfalconagent_path: "/opt/openfalcon-agent"
   magicstack_proxy_path: "/opt/magicstack-proxy-flask"
   magicstack_server_address: "http://172.16.30.56"
   cobbler_ip: "172.16.30.56"
@@ -38,3 +39,24 @@ openfalcon_agent:
     transfer_port: 8433
     http_enable: "false"
     http_listen: "1988"
+
+# openfalcon snmp and ipmi agent 
+snmp:
+  heartbeat_enabled: "true"
+  heartbeat_addr: "172.16.30.56"
+  heartbeat_port: 8200
+
+  transfer_eanbled: "true"
+  transfer_addr: "172.16.30.56"
+  transfer_port: 8433
+
+  http_eanbled: "true"
+  http_addr: "localhost"
+  http_port: 1989
+
+ipmi:
+  proxy_ip: "172.16.30.56"
+  proxy_port: 8100
+
+  transfer_ip: "172.16.30.56"
+  transfer_port: 6060

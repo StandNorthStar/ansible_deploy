@@ -8,8 +8,13 @@
   #- name: Un tar.gz magicstack-proxy-flask file
   #  unarchive: src=magicstack-proxy-flask.tar.gz dest=/opt/
 
-  #- name: Install yum repo
-  #  yum: name=epel-release state=installed
+  - name: create openfalcon [snmp ipmi] agent directory
+     file: path={{ proxy.openfalconagent_path }} state=directory mode=0755 
+
+  - name: Install openfalcon [snmp ipmi] agent
+    unarchive: src={{ item }} dest={{ proxy.openfalconagent_path }}
+      - monitor-ipmi.tar.gz
+      - snmp-collector_0512.tar.gz
 
   - name: Install packages
     yum: name={{ item }} state=installed
