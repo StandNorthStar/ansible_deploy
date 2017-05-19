@@ -1,7 +1,7 @@
 {
     "debug": true,
-    "hostname": "",
-    "ip": "",
+    "hostname": "{{ hostvars[inventory_hostname]['ansible_hostname'] }}",
+    "ip": "{{ inventory_hostname }}",
     "plugin": {
         "enabled": false,
         "dir": "./plugins",
