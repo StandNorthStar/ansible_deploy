@@ -1,15 +1,15 @@
 [magicstack-server]
-172.16.30.56 ansible_ssh_user=root ansible_ssh_pass=123456 ask-pass=true
+10.1.121.161 ansible_ssh_user=root ansible_ssh_pass=t2cloud@123 ask-pass=true
 
 [magicstack-proxy-flask]
-172.16.30.56 ansible_ssh_user=root ansible_ssh_pass=123456 ask-pass=true
+10.1.121.161 ansible_ssh_user=root ansible_ssh_pass=t2cloud@123 ask-pass=true
 
 [cobbler-server]
-172.16.30.56 ansible_ssh_user=root ansible_ssh_pass=123456 ask-pass=true
+10.1.121.161 ansible_ssh_user=root ansible_ssh_pass=t2cloud@123 ask-pass=true
 
 [openfalcon-server]
-172.16.30.56 ansible_ssh_user=root ansible_ssh_pass=123456 ask-pass=true
+10.1.121.161 ansible_ssh_user=root ansible_ssh_pass=t2cloud@123 ask-pass=true
 
 [openfalcon-agent]
-172.16.30.56 ansible_ssh_user=root ansible_ssh_pass=123456 ask-pass=true
+10.1.121.161 ansible_ssh_user=root ansible_ssh_pass=t2cloud@123 ask-pass=true
 

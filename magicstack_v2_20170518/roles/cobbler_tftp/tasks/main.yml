@@ -6,7 +6,8 @@
       - "tftp-server"
 
   - name: conf tftp
-    lineinfile: dest=/etc/xinetd.d/tftp regexp="disable" line="disable=no"
+    #lineinfile: dest=/etc/xinetd.d/tftp regexp="disable" line="disable=no"
+    template: src=tftp.j2 dest=/etc/xinetd.d/tftp
 
   - name: start tftp
     service: name=xinetd  state=restarted enabled=yes

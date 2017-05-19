@@ -1,5 +1,6 @@
 ---
-enable_server: false
+
+enable_server: true
 
 magicstackserverdb:
   dbservername: "mg1"
@@ -16,5 +17,5 @@ magicstackserver:
   magcistack_server_path: "/opt/magicstack/MagicStack"
   magicstack_port: 8000
   nginx_port: 80
-  ipaddr: "172.16.30.56"
+  ipaddr: "10.1.121.161"
 

@@ -2,7 +2,7 @@
 
 INSTALL_PATH: "/opt/magicstack_openfalcon"
 
-enable_agent: false
+enable_agent: ture
 
 agent:
   plugin_enable: "true"
@@ -10,11 +10,11 @@ agent:
   http_eanbled: "false"
   http_listen: 1988
 
-  transfer: "172.16.30.56"
+  transfer: "10.1.121.161"
   transfer_port: 8433
 
-  heartbeat_addr: "172.16.30.56"
-  heartbeat_addr_port: 6030
+  heartbeat_addr: "10.1.121.161"
+  heartbeat_addr_port: 8200
 
   collector_net:
     - "eth"
