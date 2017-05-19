@@ -2,7 +2,7 @@
 
 INSTALL_PATH: "/opt/magicstack_openfalcon"
 
-enable_agent: ture
+enable_agent: true
 
 agent:
   plugin_enable: "true"
