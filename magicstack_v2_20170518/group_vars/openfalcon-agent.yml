@@ -16,6 +16,11 @@ agent:
   heartbeat_addr: "172.16.30.56"
   heartbeat_addr_port: 6030
 
+  collector_net:
+    - "eth"
+    - "em"
+    - "enp"
+
 snmp:
   heartbeat_enabled: "true"
   heartbeat_addr: "172.16.30.56"
