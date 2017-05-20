@@ -1,6 +1,6 @@
 {
   "DATABASE_URL": "mysql+mysqldb://{{ magcistackproxydb.dbuser }}:{{ magcistackproxydb.dbpassword }}@{{ magcistackproxydb.dbhost }}:{{ magcistackproxydb.dbport }}/{{ magcistackproxydb.dbproxyname }}?charset=utf8",
-  "MAGICSTACK_SERVER": "http://{{ proxy.magicstack_server_address }}",
+  "MAGICSTACK_SERVER": "{{ proxy.magicstack_server_address }}",
   "SERVER_PORT": "{{ proxy.proxy_port }}",
   "COBBLER_RPC_HOST": "{{ proxy.cobbler_ip }}",
   "COBBLER_RPC_PORT": "{{ proxy.cobbler_port }}",

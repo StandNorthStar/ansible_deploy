@@ -1,6 +1,6 @@
 ---
 
-INSTALL_PATH: "/opt/magicstack_openfalcon"
+INSTALL_PATH: "/opt/magicstackfalcon-agent"
 
 enable_agent: true
 
@@ -20,4 +20,4 @@ agent:
     - "eth"
     - "em"
     - "enp"
-
+    - "eno"

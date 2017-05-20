@@ -2,7 +2,7 @@
 
 INSTALL_PATH: "/opt/magicstack_openfalcon"
 
-falcon_server: true
+falcon_server: false
 
 db:
   db_host: "localhost"
