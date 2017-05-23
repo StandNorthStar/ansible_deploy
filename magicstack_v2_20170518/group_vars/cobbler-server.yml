@@ -1,8 +1,8 @@
-dhcp_start: "10.1.121.250"
-dhcp_end: "10.1.121.253"
-dhcp_interface: "eno16777728"
+dhcp_start: "192.168.10.200"
+dhcp_end: "192.168.10.253"
+dhcp_interface: "enp0s3"
 
-next_server: "10.1.121.161"
-server_cobbler: "10.1.121.161"
+next_server: "192.168.10.117"
+server_cobbler: "192.168.10.117"
 
 cobbler_port: 88

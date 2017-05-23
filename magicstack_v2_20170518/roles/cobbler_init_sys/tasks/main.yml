@@ -1,6 +1,8 @@
 ---
     #- name: install epel
     #  yum: name=epel-release state=installed
+    - name: install da
+      yum: name=deltarpm state=installed
 
     - name: install packages
       yum: name={{ item }} state=installed
